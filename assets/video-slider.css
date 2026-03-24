@@ -9,6 +9,11 @@
     margin-bottom: 40px;
 }
 
+.slider-heading h2{
+ color:blue;
+}
+
+
 .video-swiper {
     width: 100%;
     max-width: 1320px;
