@@ -1,0 +1,61 @@
+#custom_form {
+  max-width: 420px;
+  margin: 40px auto;
+  padding: 24px;
+  background: #fff;
+  border-radius: 10px;
+  border: 1px solid #e5e5e5;
+}
+.text{
+  text-align: center;
+}
+#custom_form .field {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 18px;
+}
+
+#custom_form label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 8px;   
+  line-height: 1.4;
+}
+
+#custom_form input,
+#custom_form select {
+  height: 42px;
+  padding: 0 12px;
+  border: 1px solid #cfcfcf;
+  border-radius: 6px;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+#custom_form label,
+#custom_form input {
+  background: transparent;
+  border: none;
+}
+
+#custom_form input,
+#custom_form select {
+  border: 1px solid #cfcfcf;
+}
+
+#custom_form input:focus,
+#custom_form select:focus {
+  border-color: #000;
+  outline: none;
+}
+
+#custom_form button {
+  margin-top: 10px;
+  padding: 12px;
+  background: #000;
+  color: #fff;
+  border-radius: 6px;
+  border: none;
+  font-size: 15px;
+}

@@ -1,0 +1,46 @@
+{{ 'custom-form.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'custom_form.js' | asset_url }}" defer="defer"></script>
+
+<section class="custom-form-section">
+  <h2 class="text">Custom Form</h2>
+  
+  <form id="custom_form">
+    <div class="field">
+      <input type="text" id="name" placeholder="Enter your name" required>
+    </div>
+
+    <div class="field">
+      <input type="tel" id="phone" placeholder="Enter your mobile number" required>
+    </div>
+
+    <div class="field">
+      <input type="email" id="email" placeholder="Enter your email id" required>
+    </div>
+
+    <div class="field">
+      <select id="security_question" required>
+        <option value="">Select a question</option>
+        <option value="pet">What is your first pet’s name?</option>
+        <option value="school">What is your school name?</option>
+        <option value="city">What is your birth city?</option>
+      </select>
+    </div>
+ <div class="field">
+    <input type="text" id="answer" required placeholder="Enter your answer here">
+  </div>
+
+    <button type="submit">Submit</button>
+  </form>
+</section>
+
+{% schema %}
+{
+  "name": "Custom Form",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Custom Form"
+    }
+  ]
+}
+{% endschema %}

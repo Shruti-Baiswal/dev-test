@@ -1,0 +1,71 @@
+{{ 'slider-custom-section.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'slider-custom-section.js' | asset_url }}" defer="defer"></script>
+{% comment %} {% assign slide = product.metafields.custom.multirow_info %}
+
+{{ slide }} {% endcomment %}
+ 
+<div class="custom-slider">
+  <div class="slider-container">
+    {% for block in section.blocks %}
+      {% if block.settings.image != blank %}
+        <div class="slide">
+          <img
+            src="{{ block.settings.image | image_url: width: 1200 }}"
+            width="{{ block.settings.width }}px"
+            height="300"
+            alt="slider image"
+          >
+          <div class="slide-content">
+            <p>{{ block.settings.heading_text }}</p>
+            {% if block.settings.button_text != blank and block.settings.button_link != blank %}
+              <a href="{{ block.settings.button_link }}" class="slide-btn">{{ block.settings.button_text }}</a>
+            {% endif %}
+          </div>
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Custom Slider",
+  "settings": [],
+  "blocks": [
+    {
+      
+      "type": "slide",
+      "name": "Slide",
+      "settings": [
+        { "type": "image_picker", 
+          "id": "image", 
+          "label": "Slide Image"
+         },
+        { "type": "text",
+           "id": "heading_text", 
+           "label": "Heading Text" 
+          },
+        { "type": "text", 
+          "id": "button_text", 
+          "label": "Button Text"
+         },
+        { "type": "url", 
+          "id": "button_link", 
+          "label": "Button Link" 
+        },
+        {
+          "type": "range",
+          "id": "width",
+          "label": "Width",
+          "min": 0,
+          "max": 1000,
+          "default": 400,
+          "unit": "px",
+          "step": 10
+        }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Custom Slider" }]
+}
+{% endschema %}

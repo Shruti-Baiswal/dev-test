@@ -1,0 +1,80 @@
+
+{{ 'image-with-text.css' | asset_url | stylesheet_tag }}
+
+{% if product %}
+  {% assign items = product.metafields.custom.multirow_info.value %}
+
+  {% if items != blank %}
+    <section class="image-with-text">
+
+      {% for item in items %}
+        <div class="block">
+          {% if item.image != blank %}
+            <div class="images">
+              <img
+                src="{{ item.image | image_url: width: 1200 }}"
+                alt="{{ item.heading }}"
+                width="100"
+                height="100"
+              >
+            </div>
+          {% endif %}
+          <div class="text">
+            {% if item.subheading != blank %}
+              <h4>{{ item.subheading }}</h4>
+            {% endif %}
+
+            {% if item.heading != blank %}
+              <h2>{{ item.heading }}</h2>
+            {% endif %}
+
+            {% if item.paragraph != blank %}
+              <p>{{ item.paragraph }}</p>
+            {% endif %}
+          </div>
+
+        </div>
+      {% endfor %}
+
+    </section>
+  {% endif %}
+{% endif %}
+
+{% assign v = product.selected_or_first_available_variant %}
+
+{% if v %}
+  <div class="variant-metafields">
+
+    {% if v.metafields.custom.note != blank %}
+      <p class="variant-note">
+        {{ v.metafields.custom.note }}
+      </p>
+    {% endif %}
+
+    {% if v.metafields.custom.image != blank %}
+      <img 
+        src="{{ v.metafields.custom.image | image_url: width: 1500 }}"
+        alt="{{ v.title }}"
+      width="100"
+                height="100"
+              >
+    {% endif %}
+
+  </div>
+{% endif %}
+
+{{ collection.metafields.custom.collection_subtitle }}
+<img src="{{ collection.metafields.custom.collection_banner | image_url: width: 1200 }}">
+
+
+{% schema %}
+{
+  "name": "Custom Image with Text",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Custom Image with Text"
+    }
+  ]
+}
+{% endschema %}

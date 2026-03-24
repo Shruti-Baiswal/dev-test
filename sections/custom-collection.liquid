@@ -1,0 +1,41 @@
+{{ 'custom-theme.css' | asset_url | stylesheet_tag }}
+
+<section class="collections-section">
+  <h2 class="section-title">Just Out!</h2>
+
+  <div class="collections-grid">
+    {% for collection in collections %}
+      {% if collection.image %}
+        {% if forloop.index <=8 %}
+          <a href="{{ collection.url }}" class="collection-card">
+  <div class="collection-img">
+    <img
+      src="{{ collection.image | image_url: width: 600 }}"
+      alt="{{ collection.title }}"
+      width="400"
+      height="300"
+    >
+  </div>
+
+  <span class="collection-name">
+    {{ collection.title }}
+  </span>
+</a>
+
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+  </div>
+</section>
+{% schema %}
+{
+  "name": "Collections Grid",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Collections Grid",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}

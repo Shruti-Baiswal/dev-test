@@ -1,0 +1,169 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "vendor": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "{{ product.vendor }}",
+            "text_style": "uppercase"
+          }
+        },
+        "title": {
+          "type": "title",
+          "settings": {}
+        },
+        "second_text_JpEtrV": {
+          "type": "second_text",
+          "settings": {
+            "icon_left": "shopify://shop_images/tool.png",
+            "icon_right": "shopify://shop_images/growth_2.png",
+            "text_center": "<p>with Stepzz <strong>Anti-Slip Tech™</strong></p>",
+            "bg_color": "#f1f6ff",
+            "text_color": "#000000"
+          }
+        },
+        "feature_points_XiQkx4": {
+          "type": "feature_points",
+          "settings": {
+            "point_1": "Unmatched grip for peak performance",
+            "point_2": "Moisture-wicking, keeps feet fresh",
+            "point_3": "Trusted by Professional Athletes"
+          }
+        },
+        "bundle_buttons_EkC9z6": {
+          "type": "bundle_buttons",
+          "settings": {
+            "btn1_text": "1 PAIR",
+            "btn1_product": "stepzz-grip-socks-1x-pair-of-stepzz-grips",
+            "btn1_quantity": 1,
+            "btn2_text": "3 PAIRS",
+            "btn2_product": "the-elite-pack-3-pairs-of-stepzz-grips-3-free-pairs",
+            "btn2_quantity": 5,
+            "btn3_text": "5 PAIRS",
+            "btn3_product": "the-ultimate-pack-5-pairs-of-stepzz-grips-5-free-pairs",
+            "btn3_quantity": 10,
+            "pair_giftbox": "shopify://shop_images/giftbox.png",
+            "gift_bold_text": "Unlock all gifts when you buy 5 pairs"
+          }
+        },
+        "bundle_gifts_gnG44q": {
+          "type": "bundle_gifts",
+          "settings": {
+            "heading": "Unlock all gifts when you buy 5 pairs",
+            "gift1_title": "Shipping Discount",
+            "gift1_image": "shopify://shop_images/Shipping_Box_-_20.png",
+            "gift1_badge": "20% OFF",
+            "gift1_locked": false,
+            "gift2_title": "Stepzz Performance Bottle",
+            "gift2_image": "shopify://shop_images/stepzz-sku-9451639.jpg",
+            "gift2_locked": true
+          }
+        },
+        "price": {
+          "type": "price",
+          "disabled": true,
+          "settings": {}
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button",
+            "swatch_shape": "circle"
+          }
+        },
+        "quantity_selector": {
+          "type": "quantity_selector",
+          "disabled": true,
+          "settings": {}
+        },
+        "quantity_bundle_76Cmbe": {
+          "type": "quantity_bundle",
+          "settings": {}
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true,
+            "show_gift_card_recipient": true
+          }
+        },
+        "description": {
+          "type": "description",
+          "settings": {}
+        },
+        "share": {
+          "type": "share",
+          "disabled": true,
+          "settings": {
+            "share_label": "Share"
+          }
+        }
+      },
+      "block_order": [
+        "vendor",
+        "title",
+        "second_text_JpEtrV",
+        "feature_points_XiQkx4",
+        "bundle_buttons_EkC9z6",
+        "bundle_gifts_gnG44q",
+        "price",
+        "variant_picker",
+        "quantity_selector",
+        "quantity_bundle_76Cmbe",
+        "buy_buttons",
+        "description",
+        "share"
+      ],
+      "settings": {
+        "enable_sticky_info": true,
+        "color_scheme": "scheme-1",
+        "media_size": "small",
+        "constrain_to_viewport": true,
+        "media_fit": "contain",
+        "gallery_layout": "stacked",
+        "mobile_thumbnails": "hide",
+        "media_position": "left",
+        "image_zoom": "lightbox",
+        "hide_variants": true,
+        "enable_video_looping": false,
+        "padding_top": 36,
+        "padding_bottom": 12
+      }
+    },
+    "related-products": {
+      "type": "related-products",
+      "disabled": true,
+      "settings": {
+        "heading": "You may also like",
+        "heading_size": "h2",
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "columns_mobile": "2",
+        "color_scheme": "scheme-1",
+        "image_ratio": "square",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "padding_top": 36,
+        "padding_bottom": 28
+      }
+    }
+  },
+  "order": [
+    "main",
+    "related-products"
+  ]
+}

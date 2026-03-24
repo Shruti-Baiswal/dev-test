@@ -1,0 +1,216 @@
+<style>
+  .overlay-image {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: black;
+    padding: 50px;
+  }
+
+  .Main {
+    max-width: 100%;
+    height: auto;
+    padding-bottom: 6px;
+    padding-left: 7px;
+}
+
+  .layer-image {
+    display: none;
+    position: absolute;
+    max-width: 116%;
+    height: auto;
+  }
+
+  .point {
+    position: absolute;
+    inset: 0;
+    color: white;
+  }
+
+  .layer {
+    position: absolute;
+    cursor: pointer;
+  }
+
+  .dot {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #a6e7ed;
+    border: none;
+    cursor: pointer;
+    position:absolute;
+  }
+
+  .layer span {
+    display: block;
+    font-size: 15px;
+    border:2px solid gray;
+    border-radius:5px;
+    background:black;
+    padding: 2px
+  }
+
+  .layer-1 { top: 30%; left: 33%; }
+  .layer-2 { top: 50%; left: 37%; }
+  .layer-3 { top: 48%; left: 58%; }
+  .layer-4 { top: 60%; left: 55%; }
+  .layer-5 { top: 80%; left: 45%; }
+
+  .dot.active {
+    box-shadow: 0 0 8px 3px #a6e7ed;
+    transform: scale(1.2);
+  }
+
+  .layer.active span {
+    color: #a6e7ed;
+    box-shadow: 0 0 10px 3px #a6e7ed;
+    font-weight: 600;
+  }
+</style>
+
+<div class="overlay-image">
+  <img class="Main" src="{{ section.settings.main | img_url: '720x580' }}">
+  <img class="layer-image first" src="{{ section.settings.first | img_url: '720x580' }}">
+  <img class="layer-image second" src="{{ section.settings.second | img_url: '720x580' }}">
+  <img class="layer-image third" src="{{ section.settings.third | img_url: '720x580' }}">
+  <img class="layer-image fourth" src="{{ section.settings.fourth | img_url: '720x580' }}">
+  <img class="layer-image fifth" src="{{ section.settings.fifth | img_url: '720x580' }}">
+
+  <div class="point">
+    <div class="layer layer-1">
+      <span>{{ section.settings.first_text }}</span>
+      <button class="dot" data-image="first"></button>
+    </div>
+
+    <div class="layer layer-2">
+      <span>{{ section.settings.second_text }}</span>
+      <button class="dot" data-image="second"></button>
+    </div>
+
+    <div class="layer layer-3">
+      <span>{{ section.settings.third_text }}</span>
+      <button class="dot" data-image="third"></button>
+    </div>
+
+    <div class="layer layer-4">
+      <span>{{ section.settings.fourth_text }}</span>
+      <button class="dot" data-image="fourth"></button>
+    </div>
+
+    <div class="layer layer-5">
+      <span>{{ section.settings.five_text }}</span>
+      <button class="dot" data-image="fifth"></button>
+    </div>
+  </div>
+</div>
+
+<script>
+  const layers = document.querySelectorAll('.layer');
+  const images = document.querySelectorAll('.layer-image');
+  {% comment %} console.log("layers",layers);  {% endcomment %}
+  {% comment %} console.log("images",images); {% endcomment %}
+
+  layers.forEach(function(layer) {
+    {% comment %} console.log("layer data",layer); {% endcomment %}
+
+    const btn = layer.querySelector('button');
+
+    btn.addEventListener('click', function() {
+
+      document.querySelectorAll('.dot').forEach(function(dot) {
+        dot.classList.remove('active');
+      {% comment %} console.log("dot",dot); {% endcomment %}
+
+      });
+            document.querySelectorAll('.layer').forEach(l => l.classList.remove('active'));
+
+            btn.classList.add('active');
+            layer.classList.add('active');
+
+      const clicked_img = btn.getAttribute('data-image');
+
+
+      images.forEach(function(img) {
+        console.log("img",img);
+        if (img.classList.contains(clicked_img)) {
+          img.style.display = 'block';
+        } else {
+          img.style.display = 'none';
+        }
+
+      });
+
+    });
+
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Overlay Image",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "main",
+      "label": "Main"
+    },
+    {
+      "type": "image_picker",
+      "id": "first",
+      "label": "First"
+    },
+    {
+      "type": "text",
+      "id": "first_text",
+      "label": "First Layer Text"
+    },
+    {
+      "type": "image_picker",
+      "id": "second",
+      "label": "Second"
+    },
+    {
+      "type": "text",
+      "id": "second_text",
+      "label": "Second Layer Text"
+    },
+    {
+      "type": "image_picker",
+      "id": "third",
+      "label": "Third"
+    },
+    {
+      "type": "text",
+      "id": "third_text",
+      "label": "Third Layer Text"
+    },
+    {
+      "type": "image_picker",
+      "id": "fourth",
+      "label": "Fourth"
+    },
+    {
+      "type": "text",
+      "id": "fourth_text",
+      "label": "Fourth Layer Text"
+    },
+    {
+      "type": "image_picker",
+      "id": "fifth",
+      "label": "Fifth"
+    },
+    {
+      "type": "text",
+      "id": "five_text",
+      "label": "Five Layer Text"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Overlay Image"
+    }
+  ]
+}
+{% endschema %}

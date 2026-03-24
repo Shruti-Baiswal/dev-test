@@ -1,0 +1,516 @@
+{% comment %} defined global varibales and reading the settings or initializing the js or css for decimal quantity {% endcomment %}
+
+{% comment %} adding this to theme.liquid for accessing the data of this file in all file {% endcomment %}
+
+{% comment %} displaying fractional quantity part in the produtc, cart, collection, searhc page {% endcomment %}
+
+{% if template.name == 'product' or 
+      template.name == 'cart' or 
+      template.name == 'index' or
+      template.name == 'collection' or 
+      template.name == 'search' 
+%}
+
+    {% comment %} decimal quantity custom css {% endcomment %}
+ 
+    <style>
+
+        .decimal_qty {
+            display: inline-flex;
+            align-items: center;
+            border: none;
+            border-radius: 20px;
+            overflow: hidden;
+            background: transparent;
+            height: 42px;
+            color: rgba(var(--color-foreground));
+            position: relative;
+            width: calc(14rem / var(--font-body-scale) + var(--inputs-border-width) * 2);
+            min-height: calc((var(--inputs-border-width) * 2) + 4.5rem);
+        }
+
+        .decimal_qty_cart{
+            display: inline-flex;
+            align-items: center;
+            border: 1px solid rgba(0, 0, 0, .35);
+            border-radius: 20px;
+            overflow: hidden;
+            background: transparent;
+            height: 42px;
+            color: rgba(var(--color-foreground));
+            position: relative;
+            width: 150px;
+            min-height: calc((var(--inputs-border-width) * 2) + 4.5rem);
+        }
+
+        .meter_qty{
+            margin-left: 10px;
+        }
+
+        .decimal {
+            color: currentColor;
+            font-family: var(--font-body-family);
+            font-style: var(--font-body-style);
+            font-weight: var(--font-body-weight);
+            font-size: 1.6rem;
+            font-weight: 550;
+            opacity: .7;
+            text-align: center;
+            background-color: transparent;
+            border: 0;
+            padding: 0 .5rem;
+            min-width: 60px;
+            width: 100%;
+            flex-grow: 1;
+            -webkit-appearance: none;
+            appearance: none;
+            height: 42px;
+            appearance: none;
+            -webkit-appearance: none;
+        }
+
+        .decimal:focus {
+            outline: none;
+            box-shadow: none;
+            border: none;
+        }
+
+        /* remove arrows */
+        .decimal::-webkit-outer-spin-button,
+        .decimal::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        .decimal_cart {
+            color: currentColor;
+            font-family: var(--font-body-family);
+            font-style: var(--font-body-style);
+            font-weight: var(--font-body-weight);
+            font-size: 1.6rem;
+            font-weight: 550;
+            opacity: .7;
+            text-align: center;
+            background-color: transparent;
+            border: 0;
+            padding: 0 .5rem;
+            min-width: 60px;
+            width: 100%;
+            flex-grow: 1;
+            -webkit-appearance: none;
+            appearance: none;
+            height: 42px;
+            appearance: none;
+            -webkit-appearance: none;
+        }
+
+        .decimal_cart:focus {
+            outline: none;
+            box-shadow: none;
+            border: none;
+        }
+
+        /* remove arrows */
+        .decimal_cart::-webkit-outer-spin-button,
+        .decimal_cart::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        span.sub, .add {
+            width: calc(4.5rem / var(--font-body-scale));
+            flex-shrink: 0;
+            border: 0;
+            background-color: transparent;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgb(var(--color-foreground));
+            padding: 0;
+            height: 42px;
+            border: none !important;
+            background: transparent;
+        }
+
+        span.sub_cart, .add_cart {
+            width: calc(4.5rem / var(--font-body-scale));
+            flex-shrink: 0;
+            border: 0;
+            background-color: transparent;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgb(var(--color-foreground));
+            padding: 0;
+            height: 42px;
+            border: none !important;
+            background: transparent;
+        }
+
+        label.qtymetersla {
+            width: 100%;
+            display: flex;
+            margin-bottom: 10px;
+            margin-top: 10px;
+            font-family: "Twentieth Century";
+            letter-spacing: 1px !important;
+            text-transform: capitalize !important;
+            font-size: 17px !important;
+        }
+
+        span#add svg {
+            width: 1.5rem;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            height: 25px;
+            opacity: .7;
+            pointer-events: none;
+        }
+            
+        span#sub svg {
+            width: 1.2rem;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            height: 25px;
+            opacity: .7;
+            pointer-events: none;
+        }
+        
+        .qty_meter {
+            height: 42px;
+            display: flex;
+            align-items: center;
+            padding-left: 10px;
+        }
+
+        span.custom_price.product__price {
+            display: flex;
+            align-items: center;
+        }
+            
+        label.qtymetersla {
+            margin-top: 0px;
+        }
+
+    </style>
+
+{% endif %}
+
+{% comment %}Only useful when there is common step size across products where defining the size step{% endcomment %}
+
+{% if settings.pr_enable_decimal %}
+    <script>
+       var step_size = {{settings.pr_decimal_step_size | json}}
+    </script>
+{% endif %}
+
+
+<script>
+
+    {% comment %} selecting the useful tags from cart  {% endcomment %}
+
+    let btnadd_Cart = document.querySelector('.add_cart');
+    let btnsub_Cart = document.querySelector('.sub_cart');
+    let input_Cart = document.querySelector('.decimal_cart');
+    let quant_Cart = document.querySelector('.js-qty__num_custom_Cart');
+    
+    {% comment %} js for + icon in qunatity selectore input {% endcomment %}
+
+    function getConfig(el) {
+    const wrap = el.closest('.decimal_qty_cart');
+    return {
+        step: parseFloat(wrap.dataset.step),
+        min: parseFloat(wrap.dataset.min)
+    };
+    }
+
+    function btnadd_cart_event(el) {
+
+        let wrapper = el.closest('.cart-item__quantity-wrapper');
+        
+        let input_Cart = el.parentNode.querySelector('.decimal_cart');
+        let quant_Cart = wrapper.querySelector('.js-qty__num_custom_Cart');
+
+        const { step } = getConfig(el);
+
+        let value = parseFloat(input_Cart.value) + step;  {%comment %} increasing value by step {% endcomment %}
+        input_Cart.value = value.toFixed(2);
+        quant_Cart.value = (input_Cart.value/step).toFixed(0); {%comment %}  converting the value in decimal for backend of shopify quantity that excepts only integer values {% endcomment %}
+
+        quant_Cart.dispatchEvent(
+            new Event('change', { bubbles: true })
+        );
+    }
+
+    {% comment %} js for - icon in qunatity selectore input {% endcomment %}
+
+    function btnsub_cart_event(el) {
+
+        let wrapper = el.closest('.cart-item__quantity-wrapper');
+        const { step } = getConfig(el);
+        let input_Cart = el.parentNode.querySelector('.decimal_cart');
+        let quant_Cart = wrapper.querySelector('.js-qty__num_custom_Cart');
+
+        let value = parseFloat(input_Cart.value) - step; {%comment %} decreasing value by step {% endcomment %}
+        
+        if(value >= {{ settings.pr_minimum_qty }}){	    
+            input_Cart.value = value.toFixed(2);
+            quant_Cart.value = (input_Cart.value/step).toFixed(0); {%comment %}  converting the value in decimal for backend of shopify quantity that excepts only integer values {% endcomment %}
+        }
+
+        quant_Cart.dispatchEvent(
+            new Event('change', { bubbles: true })
+        );
+
+    }
+
+    {% comment %} Jab user input likh ke bahar click karta hai {% endcomment %}
+
+    function focusout(el) {
+
+        let wrapper = el.closest('.cart-item__quantity-wrapper');
+        if (!wrapper) return;
+
+        const { step } = getConfig(el);
+
+        let value = parseFloat(el.value);
+        if (isNaN(value)) return;
+
+        let quant_Cart = wrapper.querySelector('.js-qty__num_custom_Cart');
+        if (!quant_Cart) return;
+
+        el.value = value.toFixed(2);
+
+        let newInteger = Math.round(value / step);
+
+        if (quant_Cart.value != newInteger) {
+            quant_Cart.value = newInteger;
+
+            quant_Cart.dispatchEvent(
+                new Event('change', { bubbles: true })
+            );
+        }
+    }
+
+    {% comment %} Jab user keyboard se value type kar raha ho {% endcomment %}
+
+    {% comment %} function onkeyup(el) {
+
+        let wrapper = el.closest('.cart-item__quantity-wrapper');
+        if (!wrapper) return;
+
+        let quant_Cart = wrapper.querySelector('.js-qty__num_custom_Cart');
+        if (!quant_Cart) return;
+
+        const { step } = getConfig(el);
+        let value = parseFloat(el.value);
+
+        if (isNaN(value)) return;
+
+        let newInteger = Math.round(value / step);
+
+        // IMPORTANT: only update if different
+        if (quant_Cart.value != newInteger) {
+            quant_Cart.value = newInteger;
+        }
+    } {% endcomment %}
+
+</script>
+
+{% comment %} Runs only for product page {% endcomment %}
+
+{% if template.name == 'product' %}
+
+    <script type = "text/javascript">
+
+        document.addEventListener('DOMContentLoaded', () => {
+
+            //function for showing fabric details
+
+            function updateFabricDetails(meterValue) {
+
+                const units = (meterValue / step).toFixed(0);
+                Fabric_details.value =
+                    meterValue.toFixed(2) +
+                    " {{ settings.pr_unit }} is equal to " +
+                    units +
+                    " units";
+            }
+
+            {% comment %} Selecting needed claases for decimal default qunatity selector{% endcomment %}
+
+            let btnadd = document.querySelector('.add');
+            let btnsub = document.querySelector('.sub');
+            let input = document.querySelector('.decimal');  {% comment %}User visible input of quantity of custom decimal input value{% endcomment %}
+            let quant = document.querySelector('.js-qty__num_custom');  {% comment %}Default shopify quantity input value{% endcomment %}
+
+            {% comment %} “If you want to show how much fabric customer order” {% endcomment %}
+            let Fabric_details = document.querySelector('.Fabric_details');
+            
+            if (!input || !quant || !btnadd || !btnsub) {
+                return;
+            }
+
+
+            {% comment %} decision of step size {% endcomment %}
+
+            if({{settings.pr_common_decimal}}){
+
+                {% comment %} converting string to floating number through parseFloat {% endcomment %}
+
+                var step = parseFloat({{ settings.pr_decimal_step_size }});
+            }
+
+            else{
+
+                var step = parseFloat({{ product.metafields.propero.decimal_step_size }});
+                
+            }
+
+            {% comment %} converting string to floating number through parseFloat for input value {% endcomment %}
+
+            {% comment %} converting input from quantity field to decimal format for input value of custom decimal part {% endcomment %}
+
+            let value = parseFloat(input.value);
+            input.value = value.toFixed(2);
+
+            {% comment %}
+              converting deciaml input value to shopify deafult value in integer for backend purpose and removing the folating part of this 
+            {% endcomment %}
+
+            quant.value = (input.value/step).toFixed(0);
+
+            {% comment %} same as increasing value of quantity by steps {% endcomment %}
+
+            btnadd.addEventListener('click', function(){
+
+                {% comment %} making the input value of custom decimal quantity input just like the decimal input based on step size on adding based on decimal values {% endcomment %}
+
+                let value = parseFloat(input.value) + step;
+                input.value = value.toFixed(2);
+
+                {% comment %} making the shopify deafult integer value based on decimal values for making the integer flow for backend {% endcomment %}
+                quant.value = (input.value/step).toFixed(0);
+
+                updateFabricDetails(value);
+
+            });
+
+            {% comment %} same as decreasing value of quantity by steps {% endcomment %}
+
+            btnsub.addEventListener('click', function(){
+
+                let value = parseFloat(input.value) - step;
+                
+                if(value >= {{ settings.pr_minimum_qty }})
+                    input.value = value.toFixed(2);
+
+                quant.value = (input.value/step).toFixed(0);
+
+                updateFabricDetails(value);
+
+            });
+
+
+           {% comment %} same as adding value when writing value of quantity by steps {% endcomment %}
+
+            input.addEventListener('focusout', function(){
+
+                let now_input_val = document.querySelector('.decimal').value;
+                var n = (now_input_val/step).toFixed(0);
+                quant.value = n;
+
+                updateFabricDetails(now_input_val);
+
+            });
+
+            {% comment %} same as adding value when keyup value of quantity by steps {% endcomment %}
+
+            input.addEventListener('keyup', function(){
+
+                let now_input_val = document.querySelector('.decimal').value;
+                var n = (now_input_val/step).toFixed(0);
+                quant.value = n;
+
+                updateFabricDetails(now_input_val);
+
+            });
+        });
+
+    </script>
+
+{% elsif template.name == 'index' %}
+
+    <script>
+
+        document.addEventListener('DOMContentLoaded', () => {
+
+            const wrapper = document.querySelector('.decimal_qty');
+            if (!wrapper) return;
+
+            const decimalInput = wrapper.querySelector('.decimal__input');
+            const btnAdd       = wrapper.querySelector('.add');
+            const btnSub       = wrapper.querySelector('.sub');
+            const quantInput   = document.getElementById('quantityInput'); // Shopify integer input
+
+            const fabricInfoInput = document.getElementById("fabricInfoInput");
+            
+            if (!decimalInput || !quantInput) return;
+
+            const step = parseFloat(decimalInput.step);
+            const min  = parseFloat(decimalInput.min);
+
+            // 🔁 SAME FORMULA AS PRODUCT PAGE
+            function sync(val) {
+
+                if (val < min) val = min;
+
+                // UI (decimal)
+                decimalInput.value = val.toFixed(2);
+
+                // Shopify backend (INTEGER)
+                quantInput.value = (val / step).toFixed(0);
+
+                if (fabricInfoInput) {
+
+                    const units = (val / step).toFixed(0);
+
+                    fabricInfoInput.value =
+                        val.toFixed(2) +
+                        " {{ settings.pr_unit }} is equal to " +
+                        units +
+                        " units";
+                }
+            }
+
+            //converting string value to float
+
+            sync(parseFloat(decimalInput.value));
+
+            //adding the value by such steps
+
+            btnAdd.addEventListener('click', () => {
+                sync(parseFloat(decimalInput.value) + step);
+            });
+
+            //subtracting the value by such steps
+
+            btnSub.addEventListener('click', () => {
+                sync(parseFloat(decimalInput.value) - step);
+            });
+
+            // for another wrting another input 
+
+            decimalInput.addEventListener('input', () => {
+                let val = parseFloat(decimalInput.value);
+                if (isNaN(val)) val = min;
+                sync(val);
+            });
+
+        });
+    </script>
+{% endif %}

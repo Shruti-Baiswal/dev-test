@@ -1,0 +1,159 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "name": "t:sections.header.name",
+  "type": "header",
+  "sections": {
+    "announcement-bar": {
+      "type": "announcement-bar",
+      "blocks": {
+        "announcement_KthKyh": {
+          "type": "announcement",
+          "disabled": true,
+          "settings": {
+            "text": "Welcome to our store",
+            "link": ""
+          }
+        },
+        "announcement_9Caqdg": {
+          "type": "announcement",
+          "settings": {
+            "text": "Welcome to our store",
+            "link": ""
+          }
+        },
+        "announcement_KyD9Rk": {
+          "type": "announcement",
+          "settings": {
+            "text": "Welcome",
+            "link": ""
+          }
+        },
+        "announcement-bar-0": {
+          "type": "announcement",
+          "settings": {
+            "text": "Welcome to our store",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "announcement_KthKyh",
+        "announcement_9Caqdg",
+        "announcement_KyD9Rk",
+        "announcement-bar-0"
+      ],
+      "disabled": true,
+      "settings": {
+        "auto_rotate": false,
+        "change_slides_speed": 3,
+        "color_scheme": "scheme-1",
+        "show_line_separator": false,
+        "show_social": false,
+        "enable_country_selector": false,
+        "enable_language_selector": false
+      }
+    },
+    "custom_announcement_bar_qRTwNj": {
+      "type": "custom-announcement-bar",
+      "blocks": {
+        "text_RURQzN": {
+          "type": "text",
+          "settings": {
+            "text": "Hassle-free returns 30-day postage paid returns"
+          }
+        },
+        "text_ENYJ7b": {
+          "type": "text",
+          "settings": {
+            "text": "Margazhi Sale - Up to 20% Off on all products in Margazhi Sale Collection"
+          }
+        },
+        "text_tVACtx": {
+          "type": "text",
+          "settings": {
+            "text": "Free Delivery - For Domestic orders above Rs. 499"
+          }
+        }
+      },
+      "block_order": [
+        "text_RURQzN",
+        "text_ENYJ7b",
+        "text_tVACtx"
+      ],
+      "custom_css": [],
+      "name": "Announcement Bar",
+      "settings": {}
+    },
+    "header": {
+      "type": "header",
+      "blocks": {
+        "mega_image_UPh3jy": {
+          "type": "mega_image",
+          "settings": {
+            "menu_handle": "",
+            "image": "shopify://shop_images/smooth-drape-twill-meetmilk-46.jpg"
+          }
+        },
+        "mega_image_hpPcDf": {
+          "type": "mega_image",
+          "settings": {
+            "menu_handle": "shop",
+            "image": "shopify://shop_images/tea1.webp",
+            "hover_bg": "shopify://shop_images/b1_cfb7d3a8-6f54-48f5-b1e6-3dcd0aeeeb3f.webp"
+          }
+        },
+        "mega_image_yJN3aY": {
+          "type": "mega_image",
+          "settings": {
+            "menu_handle": "shop",
+            "image": "shopify://shop_images/tea3.webp",
+            "hover_bg": "shopify://shop_images/b3_91258ede-0628-49cc-aa48-b3f123641ead.webp"
+          }
+        },
+        "mega_image_RnUiAq": {
+          "type": "mega_image",
+          "settings": {
+            "menu_handle": "shop",
+            "image": "shopify://shop_images/tea2.webp",
+            "hover_bg": "shopify://shop_images/b2_1150dce7-223b-4df8-b499-f39bf3d87d6e.webp"
+          }
+        }
+      },
+      "block_order": [
+        "mega_image_UPh3jy",
+        "mega_image_hpPcDf",
+        "mega_image_yJN3aY",
+        "mega_image_RnUiAq"
+      ],
+      "settings": {
+        "logo_position": "middle-center",
+        "mobile_logo_position": "center",
+        "menu": "shop",
+        "menu_type_desktop": "mega",
+        "sticky_header_type": "none",
+        "show_line_separator": true,
+        "color_scheme": "scheme-1",
+        "menu_color_scheme": "scheme-1",
+        "enable_country_selector": true,
+        "enable_language_selector": true,
+        "enable_customer_avatar": true,
+        "margin_bottom": 0,
+        "padding_top": 20,
+        "padding_bottom": 20
+      }
+    }
+  },
+  "order": [
+    "announcement-bar",
+    "custom_announcement_bar_qRTwNj",
+    "header"
+  ]
+}

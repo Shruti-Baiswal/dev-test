@@ -1,0 +1,37 @@
+{{ 'custom-theme.css' | asset_url | stylesheet_tag }}
+
+<div class="announcement-bar">
+  <div class="announcement-block">
+    {% for block in section.blocks %}
+      <div class="announcement-text">
+        {{ block.settings.text }}
+      </div>
+    {% endfor %}
+  </div>
+</div>
+{% schema %}
+{
+  "name": "Custom Announcement Bar",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "text",
+      "name": "Announcement Text",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Announcement Text",
+          "default": "Free Shipping All Over Pakistan"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Announcement Bar"
+     
+    }
+  ]
+}
+{% endschema %}

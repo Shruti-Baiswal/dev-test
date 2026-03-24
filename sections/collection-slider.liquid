@@ -1,0 +1,56 @@
+{{ 'custom-theme.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'collection-slider.js' | asset_url }}" defer="defer"></script>
+
+<div class="collection-slider">
+  <button class="arrow left" onclick="prevSlide()">&#10094;</button>
+
+  <div class="slider-box">
+    <div class="slider-block" id="slider">
+      {% for block in section.blocks %}
+        <div class="collection-slide">
+          <img
+            src="{{ block.settings.image | image_url: width: 600 }}"
+            alt="{{ block.settings.title }}"
+            width="250"
+            height="300"
+          >
+          <h3>{{ block.settings.title }}</h3>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+
+<button class="arrow right" onclick="nextSlide()">&#10095;</button>
+</div>
+
+{% schema %}
+{
+  "name": "Cotton Saree Slider",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "Slide",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Cotton Sarees"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 6,
+  "presets": [
+    {
+      "name": "Cotton Saree Slider"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,116 @@
+<script src="{{ 'scroll-slider.js' | asset_url }}" defer="defer"></script>
+{{ 'scroll-slider.css' | asset_url | stylesheet_tag }}
+
+{%style%}
+.section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+  .tabs-{{ section.id }} {
+  max-width: {{ section.settings.tabs_width }}px;
+}
+{% endstyle %}
+
+<section class="tab-list section-{{ section.id }}-padding page-width">
+  <div class="tabs tabs-{{ section.id }}">
+    {% for block in section.blocks %}
+      {% if block.type == 'tab' and block.settings.page %}
+        {% assign page = block.settings.page %}
+        <button class="tab {% if forloop.first %}active{% endif %}" data-page="{{ page.handle }}">{{ page.title }}</button>
+      {% endif %}
+    {% endfor %}
+  </div>
+
+  <div class="tab-slider {% if section.settings.reverse == 'row-reverse' %}reverse-content{% endif %}">
+    {% for block in section.blocks %}
+    {% if block.type == 'tab' and block.settings.page %}
+      {% assign page = block.settings.page %}
+      <div class="scroll-slider {% if forloop.first %}active{% endif %}" data-page="{{ page.handle }}">
+        {% if page.metafields.custom.author_list.value %}
+          <div class="left-content">
+            <h1><b>{{ page.title }}</b></h1>
+            <p>{{ page.metafields.custom.description }}</p>
+  
+            <div class="arrows">
+              <button class="prev"><i class="fa-solid fa-arrow-left"></i></button>
+              <button class="next"><i class="fa-solid fa-arrow-right"></i></button>
+            </div>
+          </div>
+  
+          <div class="right-content">
+            {% for author in page.metafields.custom.author_list.value %}
+              <div class="author-card">
+                {% if author.author_image %}
+                  <img src="{{ author.author_image | image_url }}" alt="{{ author.author_name }}">
+                {% endif %}           
+                <h4><b>{{ author.author_name }}</b></h4>
+                <p>{{ author.description }}</p>
+              </div>
+            {% endfor %}
+          </div>
+        {% endif %}
+      </div>
+    {% endif %}
+  {% endfor %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Scroll Section",
+  "settings": [
+    {
+      "type": "range",
+      "id": "tabs_width",
+      "label": "Tabs Width",
+      "min": 200,
+      "max": 1200,
+      "step": 50,
+      "unit": "px",
+      "default":300
+    }, 
+    {
+    "type": "select",
+    "id":"reverse",
+    "label":"reverse content",
+    "options": [
+     {
+      "value": "row-reverse",
+      "label": "First image"
+    },
+    {
+      "value": "row",
+      "label": "First text"
+    },
+    ],
+    "default":"row"
+    }
+  ],
+
+  "blocks": [
+    {
+      "type": "tab",
+      "name": "Tab",
+      "settings": [
+        {
+          "type": "page",
+          "id": "page",
+          "label": "Select Page"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Scroll Section",
+    }
+  ]
+}
+{% endschema %}

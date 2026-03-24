@@ -1,0 +1,96 @@
+
+<script src="{{ 'video-slider.js' | asset_url }}" defer="defer"></script>
+{{ 'video-slider.css' | asset_url | stylesheet_tag }}
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css">
+<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js" defer></script>
+
+{% style %}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+   #shopify-section-{{ section.id }} .play-btn {
+    background: {{ section.settings.play_btn_color }};
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{% endstyle %}
+
+<section class="video-slider section-{{ section.id }}-padding">
+  <h2 class="slider-heading">{{ section.settings.heading }}</h2>
+
+  <div class="swiper video-swiper">
+    <div class="swiper-wrapper">
+
+      {% for block in section.blocks %}
+        <div class="swiper-slide">
+          <div class="video-box">
+
+            {% if block.settings.video != blank %}
+              {{ block.settings.video | video_tag:
+                muted: true,
+                loop: true,
+                controls: false,
+                playsinline: true,
+                class: 'slide-video'
+              }}
+            {% endif %}
+
+            <button class="play-btn"><i class="fa-solid fa-play"></i></button>
+
+          </div>
+        </div>
+      {% endfor %}
+
+    </div>
+
+    <div class="arrow-btn">
+      <div class="prev-btn"><i class="fa-solid fa-arrow-left"></i></div>
+      <div class="next-btn"><i class="fa-solid fa-arrow-right"></i></div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Video Slider",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "TEA THAT MAKES YOU FEEL SOMETHING"
+    },
+    {
+  "type": "color",
+  "id": "play_btn_color",
+  "label": "Play Button Color",
+  "default": "#ffffff"
+}
+  ],
+  "blocks": [
+    {
+      "type": "video_slide",
+      "name": "Video Slide",
+      "settings": [
+        {
+           "type": "video", 
+           "id": "video",
+          "label": "Select video" 
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Video Slider",
+    }
+  ]
+}
+{% endschema %}

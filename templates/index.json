@@ -1,0 +1,363 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "image_banner": {
+      "type": "image-banner",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Browse our latest products",
+            "heading_size": "h0"
+          }
+        },
+        "button": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "Shop all",
+            "button_link_1": "shopify://collections/all",
+            "button_style_secondary_1": true,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading",
+        "button"
+      ],
+      "disabled": true,
+      "settings": {
+        "image_overlay_opacity": 40,
+        "image_height": "large",
+        "image_behavior": "none",
+        "desktop_content_position": "bottom-center",
+        "desktop_content_alignment": "center",
+        "show_text_box": false,
+        "color_scheme": "scheme-3",
+        "stack_images_on_mobile": false,
+        "mobile_content_alignment": "center",
+        "show_text_below": false
+      }
+    },
+    "custom_section_WDQwR7": {
+      "type": "custom-section",
+      "disabled": true,
+      "name": "Custom Section",
+      "settings": {
+        "heading": "My Custom Section",
+        "text": "This section is created for task"
+      }
+    },
+    "slider_section_4jR8dB": {
+      "type": "slider-section",
+      "blocks": {
+        "slide_W6m76X": {
+          "type": "slide",
+          "settings": {
+            "heading_text": "",
+            "button_text": "",
+            "button_link": "",
+            "width": 400
+          }
+        },
+        "slide_kJC3BB": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/slide_1.webp",
+            "heading_text": "",
+            "button_text": "",
+            "button_link": "",
+            "width": 400
+          }
+        },
+        "slide_QrrBUF": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/slide_2.webp",
+            "heading_text": "test",
+            "button_text": "SHOP NOW",
+            "button_link": "https://www.matkatus.com/collections",
+            "width": 400
+          }
+        },
+        "slide_JeC4pi": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/slide_3.webp",
+            "heading_text": "BLISSFULL BENGAL",
+            "button_text": "SHOP NOW",
+            "button_link": "https://www.matkatus.com/collections/jamdani-fabrics",
+            "width": 400
+          }
+        },
+        "slide_9WxH8z": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/slider_4.webp",
+            "heading_text": "CUSTOM TAILORING",
+            "button_text": "EXPLORE PATTERNS >>",
+            "button_link": "https://www.matkatus.com/collections/dress-stitching",
+            "width": 400
+          }
+        },
+        "slide_p88rTQ": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/slide_5.webp",
+            "heading_text": "HANDWOVENS",
+            "button_text": "SHOP",
+            "button_link": "https://www.matkatus.com/collections/handloom-fabrics",
+            "width": 400
+          }
+        }
+      },
+      "block_order": [
+        "slide_W6m76X",
+        "slide_kJC3BB",
+        "slide_QrrBUF",
+        "slide_JeC4pi",
+        "slide_9WxH8z",
+        "slide_p88rTQ"
+      ],
+      "custom_css": [],
+      "name": "Custom ",
+      "settings": {}
+    },
+    "featured_collection": {
+      "type": "featured-collection",
+      "disabled": true,
+      "settings": {
+        "collection": "frontpage",
+        "products_to_show": 8,
+        "title": "Featured products",
+        "heading_size": "h2",
+        "description": "",
+        "show_description": true,
+        "description_style": "body",
+        "columns_desktop": 4,
+        "enable_desktop_slider": false,
+        "full_width": false,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "color_scheme": "scheme-1",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "none",
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 44,
+        "padding_bottom": 36
+      }
+    },
+    "collection_slider_z89dkU": {
+      "type": "collection-slider",
+      "blocks": {
+        "slide_HrtahC": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/5_slide.webp",
+            "title": "HANDLOOM SAREES"
+          }
+        },
+        "slide_gwcpNi": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/4_slide.webp",
+            "title": "KOTA COTTON SAREES"
+          }
+        },
+        "slide_8tLdKe": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/3_slide.webp",
+            "title": "SILK COTTON SAREES"
+          }
+        },
+        "slide_HGYBjw": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/2_slide.webp",
+            "title": "MUL MUL COTTON SAREES"
+          }
+        },
+        "slide_WeKQXQ": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/Bengal_Cotton_Sarees.webp",
+            "title": "BENGAL COTTON SAREES"
+          }
+        }
+      },
+      "block_order": [
+        "slide_HrtahC",
+        "slide_gwcpNi",
+        "slide_8tLdKe",
+        "slide_HGYBjw",
+        "slide_WeKQXQ"
+      ],
+      "name": "Cotton Saree Slider",
+      "settings": {}
+    },
+    "custom_form_4YydPr": {
+      "type": "custom-form",
+      "name": "Custom Form",
+      "settings": {}
+    },
+    "custom_overlay_image_CaqCa8": {
+      "type": "custom-overlay-image",
+      "name": "Overlay Image",
+      "settings": {
+        "main": "shopify://shop_images/img1.webp",
+        "first": "shopify://shop_images/img2.webp",
+        "first_text": "layer 1 & 2",
+        "second": "shopify://shop_images/img3.webp",
+        "second_text": "layer 3",
+        "third": "shopify://shop_images/img4.webp",
+        "third_text": "layer 4",
+        "fourth": "shopify://shop_images/img5.webp",
+        "fourth_text": "layer 5",
+        "fifth": "shopify://shop_images/img6.webp",
+        "five_text": "layer 6"
+      }
+    },
+    "scroll_section_dantnw": {
+      "type": "scroll_section",
+      "blocks": {
+        "tab_qfAQ48": {
+          "type": "tab",
+          "settings": {
+            "page": "medical-advisory-board"
+          }
+        },
+        "tab_kBCdRW": {
+          "type": "tab",
+          "settings": {
+            "page": "functional-tea"
+          }
+        },
+        "tab_aeNL3M": {
+          "type": "tab",
+          "settings": {
+            "page": "ingredients"
+          }
+        },
+        "tab_pHjz49": {
+          "type": "tab",
+          "settings": {
+            "page": "about-us"
+          }
+        }
+      },
+      "block_order": [
+        "tab_qfAQ48",
+        "tab_kBCdRW",
+        "tab_aeNL3M",
+        "tab_pHjz49"
+      ],
+      "name": "scroll section",
+      "settings": {
+        "tabs_width": 500,
+        "reverse": "row"
+      }
+    },
+    "video_slider_JrVXmB": {
+      "type": "video-slider",
+      "blocks": {
+        "video_slide_NjfLhE": {
+          "type": "video_slide",
+          "settings": {
+            "video": "shopify://files/videos/video1.mp4"
+          }
+        },
+        "video_slide_Aqe6TB": {
+          "type": "video_slide",
+          "settings": {
+            "video": "shopify://files/videos/v8.mp4"
+          }
+        },
+        "video_slide_UzdTkb": {
+          "type": "video_slide",
+          "settings": {
+            "video": "shopify://files/videos/v1.mp4"
+          }
+        },
+        "video_slide_ThGLgz": {
+          "type": "video_slide",
+          "settings": {
+            "video": "shopify://files/videos/video4.mp4"
+          }
+        },
+        "video_slide_DzkDay": {
+          "type": "video_slide",
+          "settings": {
+            "video": "shopify://files/videos/v7.mp4"
+          }
+        },
+        "video_slide_PJVydL": {
+          "type": "video_slide",
+          "settings": {
+            "video": "shopify://files/videos/video1.mp4"
+          }
+        },
+        "video_slide_NBj44n": {
+          "type": "video_slide",
+          "settings": {
+            "video": "shopify://files/videos/v8.mp4"
+          }
+        },
+        "video_slide_eY4fwK": {
+          "type": "video_slide",
+          "settings": {
+            "video": "shopify://files/videos/video3.mp4"
+          }
+        },
+        "video_slide_6bHQ9F": {
+          "type": "video_slide",
+          "settings": {
+            "video": "shopify://files/videos/v9.mp4"
+          }
+        }
+      },
+      "block_order": [
+        "video_slide_NjfLhE",
+        "video_slide_Aqe6TB",
+        "video_slide_UzdTkb",
+        "video_slide_ThGLgz",
+        "video_slide_DzkDay",
+        "video_slide_PJVydL",
+        "video_slide_NBj44n",
+        "video_slide_eY4fwK",
+        "video_slide_6bHQ9F"
+      ],
+      "name": "Video Slider",
+      "settings": {
+        "heading": "TEA THAT MAKES YOU FEEL SOMETHING",
+        "play_btn_color": "#ffffff"
+      }
+    }
+  },
+  "order": [
+    "image_banner",
+    "custom_section_WDQwR7",
+    "slider_section_4jR8dB",
+    "featured_collection",
+    "collection_slider_z89dkU",
+    "custom_form_4YydPr",
+    "custom_overlay_image_CaqCa8",
+    "scroll_section_dantnw",
+    "video_slider_JrVXmB"
+  ]
+}
